@@ -1,6 +1,8 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect } from "react";
 import useScrollEffect from "../hooks/useScrollEffect";
 import useToggle from "../hooks/useToggle";
+import { NavData } from "../data/NavData";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const { scrollEffect } = useScrollEffect(200);
@@ -10,41 +12,56 @@ export default function Navbar() {
     close();
   }, [scrollEffect]);
 
+  function Logo({ ...props }) {
+    return (
+      <Link to="/" {...props}>
+        Bowery
+      </Link>
+    );
+  }
+
   return (
     <Fragment>
       <nav
-        className={`fixed h-24 flex justify-between items-center w-full transition duration-100 uppercase px-44 z-20 ${
+        className={`fixed h-24 flex md:gap-0 gap-4 md:flex-row flex-col justify-between items-center w-full transition duration-100 uppercase xl:px-44 px-2 z-20 ${
           scrollEffect ? "-translate-y-20" : "translate-x-0"
         }`}
       >
-        <ul className="flex gap-8 font-normal tracking-wider text-white text-sm">
-          <li className="cursor-pointer hover:bg-blue-700 px-2 py-2.5 rounded-lg">
-            Produce
-          </li>
-          <li className="cursor-pointer hover:bg-blue-700 px-2 py-2.5 rounded-lg">
-            About us
-          </li>
-          <li className="cursor-pointer hover:bg-blue-700 px-2 py-2.5 rounded-lg">
-            Recipes
-          </li>
-        </ul>
-        <figure className="text-center font-bold tracking-wide text-white text-3xl">
-          Bowery
-        </figure>
+        <div className="flex lg:gap-8 gap-2">
+          {NavData.slice(0, 3).map((link) => (
+            <NavLink
+              key={link.id}
+              to={link.to}
+              className={({ isActive }) =>
+                `cursor-pointer text-sm tracking-wider font-libre text-white hover:bg-blue-700 px-2 py-2.5 rounded-lg ${
+                  isActive ? "font-medium" : "font-normal "
+                }`
+              }
+            >
+              {link.name}
+            </NavLink>
+          ))}
+        </div>
+        <Logo className="text-center font-bold tracking-wide sm:py-0 py-4 text-white sm:text-3xl text-4xl" />
         <article className="flex items-center gap-4">
-          <div>
-            <ul className="flex gap-8 font-normal tracking-wider text-white text-sm">
-              <li className="cursor-pointer hover:bg-blue-700 px-2 py-2.5 rounded-lg">
-                Stories
-              </li>
-              <li className="cursor-pointer hover:bg-blue-700 px-2 py-2.5 rounded-lg">
-                Join us
-              </li>
-            </ul>
+          <div className="flex lg:gap-8 gap-2">
+            {NavData.slice(3, 5).map((link) => (
+              <NavLink
+                key={link.id}
+                to={link.to}
+                className={({ isActive }) =>
+                  `cursor-pointer text-sm tracking-wider font-libre text-white hover:bg-blue-700 px-2 py-2.5 rounded-lg ${
+                    isActive ? "font-medium" : "font-normal "
+                  }`
+                }
+              >
+                {link.name}
+              </NavLink>
+            ))}
           </div>
           <button
             type="button"
-            className="bg-white font-medium uppercase text-blue-900 tracking-wider px-6 py-2.5 rounded-lg"
+            className="bg-white font-medium uppercase text-sm text-blue-900 tracking-wider lg:px-6 px-2.5 py-2.5 rounded-lg"
           >
             Find in store
           </button>
@@ -61,35 +78,42 @@ export default function Navbar() {
       </button>
 
       {mobileMenu && (
-        <nav className="fixed h-24 bg-white flex justify-between items-center w-full uppercase px-44 z-40">
-          <ul className="flex gap-8 font-normal text-sm tracking-wider text-green-900">
-            <li className="cursor-pointer hover:bg-blue-200 px-2 py-2.5 rounded-lg">
-              Produce
-            </li>
-            <li className="cursor-pointer hover:bg-blue-200 px-2 py-2.5 rounded-lg">
-              About us
-            </li>
-            <li className="cursor-pointer hover:bg-blue-200 px-2 py-2.5 rounded-lg">
-              Recipes
-            </li>
-          </ul>
-          <figure className="text-center font-bold tracking-wide text-sky-950 text-3xl">
-            Bewery
-          </figure>
+        <nav className="fixed h-24 bg-white flex justify-between items-center w-full uppercase lg:px-24 px-2 z-40">
+          <div className="flex lg:gap-8 gap-2">
+            {NavData.slice(0, 3).map((link) => (
+              <NavLink
+                key={link.id}
+                to={link.to}
+                className={({ isActive }) =>
+                  `cursor-pointer text-sm tracking-wider font-libre text-green-950 hover:bg-blue-100 px-2 py-2.5 rounded-lg ${
+                    isActive ? "font-medium" : "font-normal "
+                  }`
+                }
+              >
+                {link.name}
+              </NavLink>
+            ))}
+          </div>
+          <Logo className="text-center font-bold tracking-wide text-sky-950 text-3xl" />
           <article className="flex items-center gap-4">
-            <div>
-              <ul className="flex gap-8 font-normal tracking-wider text-sm text-green-900">
-                <li className="cursor-pointer hover:bg-blue-200 px-2 py-2.5 rounded-lg">
-                  Stories
-                </li>
-                <li className="cursor-pointer hover:bg-blue-200 px-2 py-2.5 rounded-lg">
-                  Join us
-                </li>
-              </ul>
+            <div className="flex lg:gap-8 gap-2">
+              {NavData.slice(3, 5).map((link) => (
+                <NavLink
+                  key={link.id}
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `cursor-pointer text-sm tracking-wider font-libre text-green-950 hover:bg-blue-100 px-2 py-2.5 rounded-lg ${
+                      isActive ? "font-medium" : "font-normal "
+                    }`
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              ))}
             </div>
             <button
               type="button"
-              className="bg-green-600 font-medium text-white tracking-wider px-6 py-2.5 uppercase rounded-lg"
+              className="bg-green-600 font-medium text-sm text-white tracking-wider lg:px-6 px-2.5 py-2.5 uppercase rounded-lg"
             >
               Find in store
             </button>
