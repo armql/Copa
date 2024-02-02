@@ -4,16 +4,18 @@ import InfoSection from "../components/InfoSection";
 import ProduceSection from "../components/ProduceSection";
 import ProcessSection from "../components/ProcessSection";
 import ArticleSection from "../components/ArticleSection";
+import NewsletterSection from "../components/NewsletterSection";
 
 export default function Home() {
   return (
     <Fragment>
+      <title>Bowery | Home</title>
       <HeroSection />
       <ProduceSection />
       <ProcessSection />
       <InfoSection />
       <ArticleSection />
-      <div className="w-screen h-screen rounded-b-[60px] bg-stone-100"></div>
+      <NewsletterSection />
     </Fragment>
   );
 }
