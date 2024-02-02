@@ -1,7 +1,19 @@
 import useScrollEffect from "../hooks/useScrollEffect";
+import leafHighQuality from "../assets/leaf.webp";
+import leafLowQuality from "../assets/low-leaf.webp";
+import { useEffect, useState } from "react";
 
 export default function HeroSection() {
   const { scrollEffect } = useScrollEffect(200);
+  const [imgSrc, setImgSrc] = useState(leafLowQuality);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = leafHighQuality;
+    img.onload = () => {
+      setImgSrc(leafHighQuality);
+    };
+  }, []);
 
   return (
     <section
@@ -11,7 +23,7 @@ export default function HeroSection() {
     >
       <article className="w-full h-full flex flex-col justify-center items-center relative">
         <h1
-          className={`uppercase font-extrabold font-libre xl:text-[380px] lg:text-[320px] md:text-[240px] sm:text-[120px] text-[120px] text-white transition-all duration-300 ${
+          className={`uppercase font-extrabold font-libre xl:text-[340px] lg:text-[260px] md:text-[200px] sm:text-[160px] text-[100px] text-white transition-all duration-300 ${
             scrollEffect ? "scale-110 z-20" : ""
           }`}
         >
@@ -32,11 +44,11 @@ export default function HeroSection() {
           </button>
         </div>
       </article>
-      <figure className="absolute -bottom-[1000px] left-1/2 transform -translate-x-1/2">
+      <figure className="absolute sm:-bottom-[1450px] -bottom-[1110px] left-1/2 transform -translate-x-1/2">
         <img
-          src="https://bowery.co/wp-content/uploads/2023/04/baby-butter-1.webp"
+          src={imgSrc}
           alt="A leaf"
-          className={`brightness-90 max-w-[1100px] transition-all duration-300 ${
+          className={`brightness-90 sm:max-w-[1400px] max-w-[1100px] transition-all duration-300 ${
             scrollEffect ? "translate-y-10" : ""
           }`}
         />
