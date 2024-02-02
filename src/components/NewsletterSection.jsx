@@ -1,5 +1,10 @@
 import useScrollEffect from "../hooks/useScrollEffect";
 import LazyImage from "./common/LazyImage";
+
+import factory from "../assets/newsletter/factory.webp";
+import farm from "../assets/newsletter/farm.webp";
+import closeup from "../assets/newsletter/closeup.webp";
+
 export default function NewsletterSection() {
   const { scrollEffect } = useScrollEffect(5400);
 
@@ -26,10 +31,7 @@ export default function NewsletterSection() {
             <div className="w-[400px] h-[605px] flex flex-col items-end justify-end">
               <div className="w-full">
                 <figure className="w-full h-[450px] relative rounded-lg overflow-hidden bg-purple-500">
-                  <LazyImage
-                    src="https://bowery.co/wp-content/uploads/2020/06/R-D-Center-of-Excellence_Michael-George-Photography-768x1024.jpg"
-                    alt="Robot factory"
-                  />
+                  <LazyImage src={farm} alt="Farm factory" />
                 </figure>
                 <figcaption className="h-full w-full gap-2 py-4 px-2 flex justify-start items-start flex-col">
                   <p className="font-libre text-lg">
@@ -56,10 +58,7 @@ export default function NewsletterSection() {
               <div className="w-[400px] h-[400px]">
                 <div className="w-[400px] h-[605px] flex flex-col items-end justify-end">
                   <figure className="w-full relative overflow-hidden h-[665px] rounded-lg bg-purple-500">
-                    <LazyImage
-                      src="https://bowery.co/wp-content/uploads/2023/05/21-1024x553.webp"
-                      alt="Robot factory"
-                    />
+                    <LazyImage src={factory} alt="Robot factory" />
                   </figure>
                   <figcaption className="h-full w-full gap-2 py-4 px-2 flex justify-start items-start flex-col">
                     <p className="font-libre text-lg">
@@ -74,10 +73,7 @@ export default function NewsletterSection() {
               <div className="w-full h-[300px]">
                 <div className="w-full h-[420px] flex flex-col items-end justify-end">
                   <figure className="w-full relative h-[450px] rounded-lg bg-purple-500 overflow-hidden">
-                    <LazyImage
-                      src="https://bowery.co/wp-content/uploads/2023/07/bowery-Crostini_Closeup-WEB.jpeg"
-                      alt="Crostini closeup"
-                    />
+                    <LazyImage src={closeup} alt="Crostini closeup" />
                   </figure>
                   <figcaption className="h-full w-full gap-2 py-4 px-2 flex justify-start items-start flex-col">
                     <p className="font-libre text-lg">

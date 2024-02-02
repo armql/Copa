@@ -1,3 +1,5 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 export default function InfoSection() {
   return (
     <section className="bg-stone-100 relative w-screen h-screen overflow-hidden">
@@ -12,18 +14,18 @@ export default function InfoSection() {
             </p>
           </div>
           <div
-            className={`group-hover:block hidden transition-all group-hover:flex flex-row items-center justify-between`}
+            className={`group-hover:block hidden transition-all group-hover:flex flex-row items-end justify-between`}
           >
-            <p className="text-white text-lg font-montserrat font-normal tracking-wide w-96">
+            <p className="text-white text-lg font-libre w-96 opacity-70">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
               soluta modi cum maiores vitae ipsa aliquid hic veritatis quam
               error. Nesciunt ratione in repudiandae obcaecati adipisci quo
               culpa reprehenderit eaque?
             </p>
             <figure>
-              <img
+              <LazyLoadImage
                 src="https://bowery.co/wp-content/uploads/2023/03/illustration-step01.svg"
-                alt=""
+                alt="Magic leaf"
                 className="w-full h-full"
               />
             </figure>
@@ -39,18 +41,18 @@ export default function InfoSection() {
             </p>
           </div>
           <div
-            className={`group-hover:block hidden transition-all group-hover:flex flex-row items-center justify-between`}
+            className={`group-hover:block hidden transition-all group-hover:flex flex-row items-end justify-between`}
           >
-            <p className="text-white text-lg font-libre w-96">
+            <p className="text-white text-lg font-libre w-96 opacity-70">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
               soluta modi cum maiores vitae ipsa aliquid hic veritatis quam
               error. Nesciunt ratione in repudiandae obcaecati adipisci quo
               culpa reprehenderit eaque?
             </p>
             <figure>
-              <img
+              <LazyLoadImage
                 src="https://bowery.co/wp-content/uploads/2023/03/illustration-step02.svg"
-                alt=""
+                alt="Carrot"
                 className="w-full h-full"
               />
             </figure>
@@ -66,18 +68,18 @@ export default function InfoSection() {
             </p>
           </div>
           <div
-            className={`group-hover:block hidden transition-all group-hover:flex flex-row items-center justify-between`}
+            className={`group-hover:block hidden transition-all group-hover:flex flex-row items-end justify-between`}
           >
-            <p className="text-white text-lg font-libre w-96">
+            <p className="text-white text-lg font-libre w-96 opacity-70">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
               soluta modi cum maiores vitae ipsa aliquid hic veritatis quam
               error. Nesciunt ratione in repudiandae obcaecati adipisci quo
               culpa reprehenderit eaque?
             </p>
             <figure>
-              <img
+              <LazyLoadImage
                 src="https://bowery.co/wp-content/uploads/2023/03/illustration-step03.svg"
-                alt=""
+                alt="Strawberry"
                 className="w-full h-full"
               />
             </figure>
@@ -94,18 +96,18 @@ export default function InfoSection() {
             </p>
           </div>
           <div
-            className={`group-hover:block hidden transition-all group-hover:flex flex-row items-center justify-between`}
+            className={`group-hover:block hidden transition-all group-hover:flex flex-row items-end justify-between`}
           >
-            <p className="text-white text-lg font-libre w-96">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-              soluta modi cum maiores vitae ipsa aliquid hic veritatis quam
-              error. Nesciunt ratione in repudiandae obcaecati adipisci quo
-              culpa reprehenderit eaque?
+            <p className="text-white text-lg font-libre w-96 opacity-70">
+              Once the crops are at peak perfection, BoweryOS sends our modern
+              farmers our favorite signal; it&rsquo;s harvest time. Our greens
+              are harvested at the exact right moment and shipped to local
+              shelves in as little as 24 hours.
             </p>
             <figure>
-              <img
+              <LazyLoadImage
                 src="https://bowery.co/wp-content/uploads/2023/03/illustration-step04.svg"
-                alt=""
+                alt="Split illustration of earth"
                 className="w-full h-full"
               />
             </figure>

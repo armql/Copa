@@ -1,3 +1,4 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import useScrollEffect from "../hooks/useScrollEffect";
 
 export default function ProduceSection() {
@@ -13,7 +14,7 @@ export default function ProduceSection() {
           <p className="font-medium text-green-900">Our Produce</p>
         </figcaption>
         <div className="absolute lg:w-[450px] lg:h-[450px] w-[400px] h-[320px] flex justify-center items-center">
-          <img
+          <LazyLoadImage
             // src="https://bowery.co/wp-content/uploads/2023/04/strawberry.webp"
             src="https://static.vecteezy.com/system/resources/previews/023/742/374/non_2x/green-fresh-lettuce-illustration-ai-generative-free-png.png"
             alt=""
