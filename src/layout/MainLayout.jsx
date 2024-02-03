@@ -2,13 +2,21 @@ import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../views/Navbar";
 import Footer from "../views/Footer";
+import useOnLoad from "../hooks/useOnLoad";
+import SplashScreen from "../components/common/SplashScreen";
 
 export default function MainLayout() {
-  return (
-    <Fragment>
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </Fragment>
-  );
+  const { loading } = useOnLoad(1800);
+
+  if (loading) {
+    return <SplashScreen />;
+  } else {
+    return (
+      <Fragment>
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </Fragment>
+    );
+  }
 }

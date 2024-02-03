@@ -9,15 +9,15 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 export default function Footer() {
   return (
     <footer className="w-full h-full z-10 relative">
-      <div className="flex flex-row justify-between px-64 py-48 font-libre text-white">
-        <div className="flex w-full justify-between items-center">
+      <div className="flex flex-row justify-between xl:px-44 lg:px-36 md:px-4 sm:px-12 px-4 py-48 font-libre text-white">
+        <div className="flex sm:flex-row flex-col sm:gap-0 gap-12 w-full justify-between items-center">
           <div className="flex flex-col gap-6">
             <p className="font-medium text-lg">Get the latest and tastiest</p>
             <div className="flex flex-col gap-2">
               <input
                 type="text"
                 placeholder="Email address"
-                className="bg-transparent rounded-md px-2 py-1.5 placeholder:text-white text-sm"
+                className="bg-transparent rounded-md px-2 py-2.5 placeholder:text-white text-sm border-2"
               />
               <p className="text-xs font-light">
                 Fresh updates on product launches, farm events, and so much
@@ -27,27 +27,33 @@ export default function Footer() {
             <p>linkedin, x, ig, so on,</p>
           </div>
           <div className="flex flex-row justify-around gap-12 text-base font-medium">
-            <div className="flex flex-col gap-2">
-              <Link to="#">Produce</Link>
-              <Link to="#">About us</Link>
-              <Link to="#">Recipes</Link>
-              <Link to="#">Stories</Link>
-              <Link to="#">Find in Store</Link>
-              <Link to="#">Contact</Link>
+            <div className="flex-row gap-12 flex ">
+              <div className="flex flex-col gap-2">
+                <Link to="#">Produce</Link>
+                <Link to="#">About us</Link>
+                <Link to="#">Recipes</Link>
+                <Link to="#">Stories</Link>
+                <Link to="#">Find in Store</Link>
+                <Link to="#">Contact</Link>
+              </div>
+              <div className="flex flex-col gap-2">
+                <Link to="#">Join us</Link>
+                <Link to="#">Leadership</Link>
+                <Link to="#">Terms of Service</Link>
+                <Link to="#">Privacy Policy</Link>
+                <Link to="#">Support</Link>
+              </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <Link to="#">Join us</Link>
-              <Link to="#">Leadership</Link>
-              <Link to="#">Terms of Service</Link>
-              <Link to="#">Privacy Policy</Link>
-              <Link to="#">Support</Link>
-            </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 lg:block hidden">
               <p>Office</p>
               <p className="font-light text-sm">
                 151 W 26th St 12th Floor, New York NY 10001
               </p>
-              <p className="text-xs font-light">View on maps</p>
+              <div className="flex justify-start items-center">
+                <p className="text-xs font-light px-2 py-1 rounded-lg text-blue-950 bg-opacity-60 bg-white">
+                  View on maps
+                </p>
+              </div>
             </div>
           </div>
         </div>
