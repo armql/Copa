@@ -1,77 +1,12 @@
-import { useEffect, useRef, useState } from "react";
-import butterhead from "../assets/butterhead_optimised.mp4";
+import { Fragment } from "react";
+import useResizer from "../hooks/useResizer";
+import ProcessDefault from "../features/Home/Process/ProcessDefault";
+import ProcessMobile from "../features/Home/Process/ProcessMobile";
 
 export default function ProcessSection() {
-  const videoRef = useRef(null);
-  const [isVideoVisible, setIsVideoVisible] = useState(false);
-
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setIsVideoVisible(true);
-          if (videoRef.current && videoRef.current.readyState === 4) {
-            // Check if video is loaded
-            videoRef.current.play();
-          } else {
-            videoRef.current.oncanplay = () => videoRef.current.play(); // Wait for video to be loaded
-          }
-        } else {
-          setIsVideoVisible(false);
-          if (videoRef.current) {
-            videoRef.current.pause();
-          }
-        }
-      });
-    }, options);
-
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
-    }
-
-    return () => {
-      if (videoRef.current) {
-        observer.unobserve(videoRef.current);
-      }
-    };
-  }, []);
+  const { size: mobile } = useResizer(768);
 
   return (
-    <article className="flex sm:flex-row flex-col gap-4 bg-stone-100 items-center w-full justify-between xl:px-82 lg:px-32 md:px-12 px-2  py-48 mx-auto">
-      <div className="flex flex-col gap-2 w-96 text-start">
-        <div className="flex flex-row gap-2 items-center">
-          <div className="w-3 h-3 bg-green-400 rounded-sm"></div>
-          <p className="font-medium text-green-900 text-lg uppercase">
-            Process
-          </p>
-        </div>
-        <h1 className="font-extrabold font-libre tracking-tight text-5xl text-green-950">
-          How we grow our greens.
-        </h1>
-        <p className="font-light text-base text-green-950 leading-relaxed">
-          With BoweryOS, the proprietary technology that powers our farms, every
-          crop is the cream of the crop.
-        </p>
-      </div>
-      <div className="flex flex-row items-end">
-        <div className="w-[450px] border-4 border-lime-700 h-[400px] overflow-hidden rounded-lg">
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            src={butterhead}
-            alt=""
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </div>
-    </article>
+    <Fragment>{!mobile ? <ProcessDefault /> : <ProcessMobile />}</Fragment>
   );
 }
