@@ -1,24 +1,21 @@
 import { Fragment, useEffect } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { NavLink } from "react-router-dom";
 import BarIcon from "../../assets/icon/BarIcon";
 import Logo from "../../components/common/Logo";
 import useToggle from "../../hooks/useToggle";
 import RemoveIcon from "../../assets/icon/RemoveIcon";
 import { NavData } from "../../data/NavData";
-import { NavLink } from "react-router-dom";
-
 export default function MobileNav() {
   const { open, close, effect } = useToggle();
 
   useEffect(() => {
     if (effect) {
-      // Disable scrolling
       document.body.style.overflow = "hidden";
     } else {
-      // Enable scrolling
       document.body.style.overflow = "auto";
     }
 
-    // Clean up
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -52,13 +49,22 @@ export default function MobileNav() {
                 to={link.to}
                 onClick={close}
                 className={({ isActive }) =>
-                  `cursor-pointer font-extrabold font-libre text-5xl px-2 py-2.5 rounded-lg ${
+                  `cursor-pointer font-extrabold font-libre text-6xl px-2 py-2.5 relative rounded-lg ${
                     isActive
                       ? "text-blue-900 cursor-not-allowed"
                       : "hover:text-blue-900 text-blue-950"
                   }`
                 }
               >
+                {link.img !== null && (
+                  <div className="absolute -left-6 -z-10 top-0">
+                    <LazyLoadImage
+                      src={link.img}
+                      alt="leaf"
+                      className="w-14 h-14"
+                    />
+                  </div>
+                )}
                 {link.name}
               </NavLink>
             ))}

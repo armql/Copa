@@ -1,14 +1,17 @@
 import { NavLink } from "react-router-dom";
 import { NavData } from "../../data/NavData";
 import Logo from "../../components/common/Logo";
+import useOnLoad from "../../hooks/useOnLoad";
 
 // eslint-disable-next-line react/prop-types
 export default function DefaultNav({ effect }) {
+  const { loading } = useOnLoad(500);
+
   return (
     <nav
-      className={`fixed h-24 flex md:gap-0 gap-4 md:flex-row flex-col justify-between items-center w-full transition duration-100 uppercase xl:px-44 px-2 z-20 ${
+      className={`fixed h-24 flex md:gap-0 gap-4 md:flex-row flex-col justify-between items-center w-full transition  uppercase xl:px-44 px-2 z-20 duration-100 ease-in-out ${
         effect ? "-translate-y-20" : "translate-x-0"
-      }`}
+      } ${loading ? "opacity-0" : "opacity-100"}`}
     >
       <div className="flex lg:gap-8 gap-2">
         {NavData.slice(0, 3).map((link) => (
