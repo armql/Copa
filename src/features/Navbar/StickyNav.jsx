@@ -4,7 +4,7 @@ import Logo from "../../components/common/Logo";
 
 export default function StickyNav() {
   return (
-    <nav className="fixed h-24 bg-white flex justify-between items-center w-full uppercase lg:px-24 px-2 z-40">
+    <nav className="fixed h-24 bg-white flex justify-between items-center w-full uppercase xl:px-44 px-2 z-40">
       <div className="flex lg:gap-8 gap-2">
         {NavData.slice(0, 3).map((link) => (
           <NavLink

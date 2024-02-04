@@ -49,7 +49,7 @@ export default function MobileNav() {
                 to={link.to}
                 onClick={close}
                 className={({ isActive }) =>
-                  `cursor-pointer font-extrabold font-libre text-6xl px-2 py-2.5 relative rounded-lg ${
+                  `cursor-pointer font-extrabold group font-libre text-6xl px-2 py-2.5 relative rounded-lg ${
                     isActive
                       ? "text-blue-900 cursor-not-allowed"
                       : "hover:text-blue-900 text-blue-950"
@@ -61,7 +61,7 @@ export default function MobileNav() {
                     <LazyLoadImage
                       src={link.img}
                       alt="leaf"
-                      className="w-14 h-14"
+                      className="w-14 h-14 group-hover:-rotate-12 transition duration-300"
                     />
                   </div>
                 )}
