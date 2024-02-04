@@ -4,7 +4,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 body {
   @apply bg-blue-600;
+}
+
+* {
+  z-index: 0;
 }

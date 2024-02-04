@@ -37,7 +37,7 @@ export default function HeroSection() {
         <h1
           className={`text-white uppercase font-extrabold font-montserrat xl:text-[250px] lg:text-[240px] md:text-[200px] sm:text-[160px] text-[90px] transition-all duration-300 ${
             scrollEffect ? "scale-110 z-20" : ""
-          } ${loading ? "translate-y-52" : ""}`}
+          } ${loading ? "translate-y-72" : ""}`}
         >
           Eat up
         </h1>

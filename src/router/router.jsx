@@ -23,9 +23,7 @@ const router = createBrowserRouter([
         path: "home",
         element: (
           <Suspense
-            fallback={
-              <div className="w-screen h-screen bg-blue-400">loading</div>
-            }
+            fallback={<div className="w-screen h-screen bg-blue-400"></div>}
           >
             <Home />
           </Suspense>
@@ -35,9 +33,7 @@ const router = createBrowserRouter([
         path: "produce",
         element: (
           <Suspense
-            fallback={
-              <div className="w-screen h-screen bg-blue-400">loading</div>
-            }
+            fallback={<div className="w-screen h-screen bg-blue-400"></div>}
           >
             <Produce />
           </Suspense>
@@ -47,9 +43,7 @@ const router = createBrowserRouter([
         path: "about",
         element: (
           <Suspense
-            fallback={
-              <div className="w-screen h-screen bg-blue-400">loading</div>
-            }
+            fallback={<div className="w-screen h-screen bg-blue-400"></div>}
           >
             <About />
           </Suspense>
@@ -59,9 +53,7 @@ const router = createBrowserRouter([
         path: "recipes",
         element: (
           <Suspense
-            fallback={
-              <div className="w-screen h-screen bg-blue-400">loading</div>
-            }
+            fallback={<div className="w-screen h-screen bg-blue-400"></div>}
           >
             <Recipes />
           </Suspense>
@@ -71,9 +63,7 @@ const router = createBrowserRouter([
         path: "stories",
         element: (
           <Suspense
-            fallback={
-              <div className="w-screen h-screen bg-blue-400">loading</div>
-            }
+            fallback={<div className="w-screen h-screen bg-blue-400"></div>}
           >
             <Stories />
           </Suspense>
@@ -83,9 +73,7 @@ const router = createBrowserRouter([
         path: "join-us",
         element: (
           <Suspense
-            fallback={
-              <div className="w-screen h-screen bg-blue-400">loading</div>
-            }
+            fallback={<div className="w-screen h-screen bg-blue-400"></div>}
           >
             <JoinUs />
           </Suspense>

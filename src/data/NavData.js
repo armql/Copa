@@ -1,6 +1,6 @@
-import vertical from "../assets/vertical.svg";
-import spinach from "../assets/spinach.svg";
-import light_spinach from "../assets/light-spinach.svg";
+import vertical from "../assets/footer/vertical.svg";
+import spinach from "../assets/footer/spinach.svg";
+import light_spinach from "../assets/footer/light-spinach.svg";
 const NavData = [
   { id: 1, name: "Produce", to: "produce", img: vertical },
   { id: 2, name: "About", to: "about", img: light_spinach },

@@ -12,11 +12,11 @@ export default function MainLayout() {
     return <SplashScreen />;
   } else {
     return (
-      <Fragment>
+      <div className="relative">
         <Navbar />
         <Outlet />
         <Footer />
-      </Fragment>
+      </div>
     );
   }
 }

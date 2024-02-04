@@ -46,7 +46,7 @@ export default function InfoSection() {
 
   return (
     <section className="bg-stone-100 relative w-screen h-screen overflow-hidden">
-      <div className="px-12 py-8 flex justify-center items-center flex-col w-full h-full">
+      <div className="lg:px-12 px-4 py-8 flex justify-center items-center flex-col w-full h-full">
         {articles.map((article) => (
           <article
             key={article.number}
