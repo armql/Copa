@@ -20,7 +20,6 @@ export default function ProduceDefault() {
       <figure className="relative py-12 w-full h-full flex justify-center items-center">
         <div className="absolute lg:w-[450px] lg:h-[450px] w-[400px] h-[320px] flex justify-center items-center">
           <LazyLoadImage
-            // src="https://bowery.co/wp-content/uploads/2023/04/strawberry.webp"
             src={cabbage}
             alt=""
             className={`absolute top-0 left-0 right-0 bottom-0 brightness-90 z-10 transition-all duration-500 ${

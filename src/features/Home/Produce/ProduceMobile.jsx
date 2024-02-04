@@ -1,5 +1,6 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import useScrollEffect from "../../../hooks/useScrollEffect";
+import cabbage from "../../../assets/cabbage.webp";
 
 export default function ProduceMobile() {
   const { scrollEffect } = useScrollEffect(700);
@@ -19,7 +20,7 @@ export default function ProduceMobile() {
       <figure className="relative py-12 w-[1450px] h-full flex justify-center items-center">
         <div className="absolute w-[300px] h-[300px] flex justify-center items-center">
           <LazyLoadImage
-            src="https://static.vecteezy.com/system/resources/previews/023/742/374/non_2x/green-fresh-lettuce-illustration-ai-generative-free-png.png"
+            src={cabbage}
             alt=""
             className={`absolute top-0 left-0 right-0 bottom-0 brightness-90 z-10 transition-all duration-500 ${
               scrollEffect ? "rotate-45" : ""
