@@ -42,18 +42,18 @@ export default function SplashScreen() {
       }));
     }, 1200);
 
-    const final = setTimeout(() => {
-      setState((prev) => ({
-        ...prev,
-        final: true,
-      }));
-    }, 1600);
+    // const final = setTimeout(() => {
+    //   setState((prev) => ({
+    //     ...prev,
+    //     final: true,
+    //   }));
+    // }, 1600);
 
     return () => {
       clearTimeout(first);
       clearTimeout(second);
       clearTimeout(third);
-      clearTimeout(final);
+      // clearTimeout(final);
     };
   }, []);
 
@@ -89,11 +89,11 @@ export default function SplashScreen() {
       >
         Eat up
       </div>
-      <div
+      {/* <div
         className={`w-full h-full absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-white transition-all ${
           !state.final ? "opacity-0" : "opacity-100"
         }`}
-      ></div>
+      ></div> */}
     </div>
   );
 }
