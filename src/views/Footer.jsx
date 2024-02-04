@@ -1,56 +1,119 @@
 import { Link } from "react-router-dom";
-import vertical from "../assets/vertical.svg";
-import spinach from "../assets/spinach.svg";
-import light_spinach from "../assets/light-spinach.svg";
-import strawberry from "../assets/strawberry.svg";
-import spinach_icon from "../assets/spinach-icon.png";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+
+import useInterpolator from "../hooks/useInterpolator";
+import { useEffect, useState } from "react";
+import AnimatedIllustrations from "../features/Footer/AnimatedIllustrations";
+import Apple from "../assets/icon/Apple";
+import Linkedin from "../assets/icon/Linkedin";
+import Meta from "../assets/icon/Meta";
+import Spotify from "../assets/icon/Spotify";
+import { ShortcutData } from "../data/ShortcutData";
 
 export default function Footer() {
+  const [scrollY, setScrollY] = useState(0);
+  const [pageHeight, setPageHeight] = useState(0);
+  const { value } = useInterpolator({
+    x: scrollY,
+    up: pageHeight - 400,
+    down: pageHeight,
+  });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY >= pageHeight - 500) {
+        setScrollY(currentScrollY);
+      }
+    };
+
+    const handleResize = () => {
+      const newPageHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      setPageHeight(newPageHeight);
+      if (window.scrollY >= newPageHeight - 500) {
+        setScrollY(window.scrollY);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [value, pageHeight]);
+
   return (
-    <footer className="w-full h-full z-10 relative">
-      <div className="flex flex-row justify-between xl:px-44 lg:px-36 md:px-4 sm:px-12 px-4 py-48 font-libre text-white">
-        <div className="flex sm:flex-row flex-col sm:gap-0 gap-12 w-full justify-between items-center">
-          <div className="flex flex-col gap-6">
-            <p className="font-medium text-lg">Get the latest and tastiest</p>
+    <footer
+      className={`-z-10 relative w-full transition duration-100 ease-in-out`}
+      style={{
+        transform: `translateY(-${Math.round(value)}%)`,
+      }}
+    >
+      <div className="flex w-full h-full flex-row justify-between xl:px-44 lg:px-36 md:px-4 sm:px-12 px-16 py-48 font-libre text-white">
+        <div className="flex z-20 sm:flex-row flex-col sm:gap-0 gap-12 w-full justify-evenly items-center">
+          <div className="flex flex-col gap-6 sm:w-72 w-full">
+            <p className="font-medium text-3xl">Get the latest and tastiest</p>
             <div className="flex flex-col gap-2">
               <input
                 type="text"
                 placeholder="Email address"
-                className="bg-transparent rounded-md px-2 py-2.5 placeholder:text-white text-sm border-2"
+                className="bg-transparent rounded-md px-2 py-2.5 placeholder:text-blue-300 focus:placeholder:text-white text-sm border-2 focus:border-white focus:outline-none"
               />
               <p className="text-xs font-light">
                 Fresh updates on product launches, farm events, and so much
                 more.
               </p>
             </div>
-            <p>linkedin, x, ig, so on,</p>
+            <div className="text-white flex flex-row gap-4 justify-around">
+              <Apple fill="white" />
+              <Linkedin fill="white" />
+              <Meta fill="white" />
+              <Spotify fill="white" />
+            </div>
           </div>
-          <div className="flex flex-row justify-around gap-12 text-base font-medium">
-            <div className="flex-row gap-12 flex ">
-              <div className="flex flex-col gap-2">
-                <Link to="#">Produce</Link>
-                <Link to="#">About us</Link>
-                <Link to="#">Recipes</Link>
-                <Link to="#">Stories</Link>
-                <Link to="#">Find in Store</Link>
-                <Link to="#">Contact</Link>
+          <div className="flex flex-row justify-around sm:w-fit w-full gap-12 text-base font-medium">
+            <div className="flex-row gap-12 flex sm:w-fit justify-center w-full">
+              <div className="flex flex-col gap-2 w-f">
+                {ShortcutData.slice(0, 6).map((link) => (
+                  <Link key={link.id} to={link.to} className="group">
+                    {link.name}
+                    <div className="group-hover:w-full w-0 group-hover:bg-white h-0.5 transition-all duration-500"></div>
+                  </Link>
+                ))}
               </div>
               <div className="flex flex-col gap-2">
-                <Link to="#">Join us</Link>
-                <Link to="#">Leadership</Link>
-                <Link to="#">Terms of Service</Link>
-                <Link to="#">Privacy Policy</Link>
-                <Link to="#">Support</Link>
+                {ShortcutData.slice(6, 10).map((link) => (
+                  <Link key={link.id} to={link.to} className="group">
+                    {link.name}
+                    <div className="group-hover:w-full w-0 group-hover:bg-white h-0.5 transition-all duration-500"></div>
+                  </Link>
+                ))}
               </div>
             </div>
-            <div className="flex flex-col gap-2 lg:block hidden">
+            <div className="flex flex-col gap-2 lg:block hidden sm:w-40 w-full">
               <p>Office</p>
-              <p className="font-light text-sm">
+              <p className="font-light text-xs">
                 151 W 26th St 12th Floor, New York NY 10001
               </p>
-              <div className="flex justify-start items-center">
-                <p className="text-xs font-light px-2 py-1 rounded-lg text-blue-950 bg-opacity-60 bg-white">
+              <div className="flex gap-1 justify-start mt-2 items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <p className="text-sm flex font-light rounded-lg text-white">
                   View on maps
                 </p>
               </div>
@@ -58,101 +121,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 grid grid-cols-7 items-end h-full w-full justify-center">
-        <div className="w-full h-full relative group overflow-y-clip">
-          <LazyLoadImage
-            src="https://bowery.co/wp-content/uploads/2023/03/mustard-frills-illustration.svg"
-            alt="mustard frills"
-            className="w-40 h-40 rotate-12 bottom-10 -left-20 absolute group-hover:rotate-45 transition-all duration-1000"
-          />
-          <LazyLoadImage
-            src={strawberry}
-            alt="mustard frills"
-            className="w-40 h-40 rotate-45 -bottom-10 -left-10 absolute group-hover:rotate-90 transition-all duration-1000"
-          />
-          <LazyLoadImage
-            src="https://bowery.co/wp-content/uploads/2023/03/mixed-greens-illustration.svg"
-            alt="mustard frills"
-            className="w-40 h-40 rotate-0 -bottom-10 left-20 absolute group-hover:rotate-12 transition-all duration-1000"
-          />
-        </div>
-        <div className="w-full h-full group relative overflow-y-clip">
-          <LazyLoadImage
-            src={spinach_icon}
-            alt="spinach icon"
-            className="w-40 h-40 rotate-12 -bottom-[80px] -left-2 absolute group-hover:rotate-45 transition-all duration-1000 brightness-75"
-          />
-          <LazyLoadImage
-            src={vertical}
-            alt="baby kale"
-            className="w-40 h-40 -rotate-12 -bottom-[0px] left-10 absolute group-hover:rotate-12 transition-all duration-1000 brightness-75"
-          />
-          <LazyLoadImage
-            src={spinach}
-            alt="baby kale"
-            className="w-40 h-40 -rotate-12 -bottom-[40px] left-[100px] absolute group-hover:rotate-12 transition-all duration-1000 brightness-75"
-          />
-        </div>
-        <div className="w-full h-full relative group overflow-y-clip">
-          <LazyLoadImage
-            src="https://bowery.co/wp-content/uploads/2023/03/spring-mix-illustration.svg"
-            alt="mustard frills"
-            className="w-52 h-52 -rotate-12 -bottom-[100px] left-3 absolute group-hover:rotate-12 transition-all duration-1000 brightness-75"
-          />
-        </div>
-        <div className="w-full h-full relative group overflow-y-clip"></div>
-        <div className="w-full h-full relative group overflow-y-clip">
-          <LazyLoadImage
-            src={light_spinach}
-            alt="baby kale"
-            className="w-40 h-40 rotate-0 -bottom-[50px] left-0 z-10 absolute group-hover:-rotate-12 transition-all duration-1000 brightness-75"
-          />
-          <LazyLoadImage
-            src="https://bowery.co/wp-content/uploads/2023/03/baby-kale-illustration.svg"
-            alt="baby kale"
-            className="w-40 h-40 rotate-0 -bottom-[100px] left-32 z-10 absolute group-hover:-rotate-12 transition-all duration-1000 brightness-75"
-          />
-          <LazyLoadImage
-            src="https://bowery.co/wp-content/uploads/2024/01/mustard-green-leaf-2668x3999-5315565-1-683x1024.png"
-            alt="baby kale"
-            className="w-40 h-40 rotate-0 -bottom-[80px] left-10 z-20 absolute group-hover:-rotate-12 transition-all duration-1000 brightness-75"
-          />
-        </div>
-        <div className="w-full h-full relative group overflow-y-clip">
-          <LazyLoadImage
-            src={strawberry}
-            alt="strawberry"
-            className="w-56 h-56 rotate-90 -bottom-24 left-10 absolute group-hover:rotate-[75deg] transition-all duration-1000 brightness-90 z-10"
-          />
-          <LazyLoadImage
-            src={spinach_icon}
-            alt="spinach icon"
-            className="w-40 h-40 rotate-12 -bottom-[80px] -left-2 absolute group-hover:-rotate-12 transition-all duration-1000 brightness-75"
-          />
-        </div>
-        <div className="w-full h-full relative group overflow-clip">
-          <LazyLoadImage
-            src="https://bowery.co/wp-content/uploads/2023/03/spring-mix-illustration.svg"
-            alt="mustard frills"
-            className="w-52 h-52 -rotate-45 bottom-[40px] -right-20 absolute group-hover:-rotate-[65deg] transition-all duration-1000 brightness-75"
-          />
-          <LazyLoadImage
-            src={vertical}
-            alt="baby kale"
-            className="w-40 h-40 rotate-12 -bottom-[0px] left-0 absolute group-hover:-rotate-12 transition-all duration-1000 brightness-75"
-          />
-          <LazyLoadImage
-            src="https://bowery.co/wp-content/uploads/2023/03/mixed-greens-illustration.svg"
-            alt="mustard frills"
-            className="w-40 h-40 rotate-0 -bottom-10 left-20 absolute group-hover:-rotate-12 transition-all duration-1000"
-          />
-          <LazyLoadImage
-            src="https://bowery.co/wp-content/uploads/2023/03/mustard-frills-illustration.svg"
-            alt="mustard frills"
-            className="w-40 h-40 rotate-12 -bottom-20 -left-4 absolute group-hover:-rotate-12 transition-all duration-1000"
-          />
-        </div>
-      </div>
+      <AnimatedIllustrations />
     </footer>
   );
 }
