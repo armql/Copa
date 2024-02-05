@@ -49,40 +49,41 @@ export default function Footer() {
 
   return (
     <footer
-      className={`-z-10 relative w-full transition duration-100 ease-in-out`}
+      className={`relative -z-10 h-full w-full transition duration-100 ease-in-out`}
       style={{
         transform: `translateY(-${Math.round(value)}%)`,
       }}
     >
-      <div className="flex w-full h-full flex-row justify-between xl:px-44 lg:px-36 md:px-4 sm:px-12 px-16 py-48 font-libre text-white">
-        <div className="flex z-20 sm:flex-row flex-col sm:gap-0 gap-12 w-full justify-evenly items-center">
-          <div className="flex flex-col gap-6 sm:w-72 w-full">
-            <p className="font-medium text-3xl">Get the latest and tastiest</p>
+      <div className="mx-auto h-full max-w-7xl px-6 py-12 text-white">
+        <div className="z-20 flex w-full flex-col items-center justify-evenly gap-12 sm:flex-row sm:gap-0">
+          <div className="flex w-full flex-col gap-6 sm:w-72">
+            <p className="text-3xl font-medium">Get the latest and tastiest</p>
             <div className="flex flex-col gap-2">
               <input
                 type="text"
                 placeholder="Email address"
-                className="bg-transparent rounded-md px-2 py-2.5 placeholder:text-blue-300 focus:placeholder:text-white text-sm border-2 focus:border-white focus:outline-none"
+                className="rounded-md border-2 bg-transparent px-2 py-2.5 text-sm placeholder:text-blue-300 focus:border-white focus:outline-none focus:placeholder:text-white"
               />
+
               <p className="text-xs font-light">
                 Fresh updates on product launches, farm events, and so much
                 more.
               </p>
             </div>
-            <div className="text-white flex flex-row gap-4 justify-around">
+            <div className="flex flex-row justify-around gap-4 text-white">
               <Apple fill="white" />
               <Linkedin fill="white" />
               <Meta fill="white" />
               <Spotify fill="white" />
             </div>
           </div>
-          <div className="flex flex-row justify-around sm:w-fit w-full gap-12 text-base font-medium">
-            <div className="flex-row gap-12 flex sm:w-fit justify-center w-full">
-              <div className="flex flex-col gap-2 w-f">
+          <div className="flex w-full flex-row justify-around gap-12 text-base font-medium sm:w-fit">
+            <div className="flex w-full flex-row justify-center gap-12 sm:w-fit">
+              <div className="w-f flex flex-col gap-2">
                 {ShortcutData.slice(0, 6).map((link) => (
                   <Link key={link.id} to={link.to} className="group">
                     {link.name}
-                    <div className="group-hover:w-full w-0 group-hover:bg-white h-0.5 transition-all duration-500"></div>
+                    <div className="h-0.5 w-0 transition-all duration-500 group-hover:w-full group-hover:bg-white"></div>
                   </Link>
                 ))}
               </div>
@@ -90,22 +91,22 @@ export default function Footer() {
                 {ShortcutData.slice(6, 10).map((link) => (
                   <Link key={link.id} to={link.to} className="group">
                     {link.name}
-                    <div className="group-hover:w-full w-0 group-hover:bg-white h-0.5 transition-all duration-500"></div>
+                    <div className="h-0.5 w-0 transition-all duration-500 group-hover:w-full group-hover:bg-white"></div>
                   </Link>
                 ))}
               </div>
             </div>
-            <div className="flex flex-col gap-2 lg:block hidden sm:w-40 w-full">
+            <div className="flex hidden w-full flex-col gap-2 sm:w-40 lg:block">
               <p>Office</p>
-              <p className="font-light text-xs">
+              <p className="text-xs font-light">
                 151 W 26th St 12th Floor, New York NY 10001
               </p>
-              <div className="flex gap-1 justify-start mt-2 items-center">
+              <div className="mt-2 flex items-center justify-start gap-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                 >
                   <path
                     fillRule="evenodd"
@@ -113,7 +114,7 @@ export default function Footer() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <p className="text-sm flex font-light rounded-lg text-white">
+                <p className="flex rounded-lg text-sm font-light text-white">
                   View on maps
                 </p>
               </div>
