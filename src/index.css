@@ -12,3 +12,8 @@ body {
 * {
   z-index: 0;
 }
+
+.font-condensed {
+  font-stretch: extra-condensed;
+  font-weight: 900;
+}
