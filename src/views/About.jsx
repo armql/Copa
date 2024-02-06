@@ -1,8 +1,13 @@
+import { Fragment } from "react";
+import HeroSection from "../components/About/HeroSection";
+import CardSection from "../components/About/CardSection";
+
 export default function About() {
   return (
-    <section className="w-screen h-screen">
+    <Fragment>
       <title>Bowery | About</title>
-      <h1>About</h1>
-    </section>
+      <HeroSection />
+      <CardSection />
+    </Fragment>
   );
 }
