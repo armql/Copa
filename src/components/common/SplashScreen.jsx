@@ -51,7 +51,7 @@ export default function SplashScreen() {
         className={`w-full text-center font-montserrat text-[60px] font-extrabold uppercase text-blue-800 transition-all ease-in-out sm:text-[80px] md:text-[100px] lg:text-[120px] xl:text-[140px] ${
           state.second ? "translate-y-0" : "translate-y-20"
         } ${!state.first ? "hidden" : "block"}`}
-        style={{ height: "200px" }} // Fixed height to prevent layout shift
+        style={{ height: "200px" }}
       >
         Biiig Flavor
       </div>
