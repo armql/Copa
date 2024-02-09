@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function AnimatedIllustrations() {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <div className="absolute bottom-0 left-0 right-0">
+    <div className="absolute bottom-0 left-0 right-0 -z-10">
       <svg
         id="footer-animation-svg"
         xmlns="http://www.w3.org/2000/svg"
@@ -15,7 +15,7 @@ export default function AnimatedIllustrations() {
       >
         <g
           id="footer-object-11"
-          className="w-full h-full"
+          className="h-full w-full"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           style={{

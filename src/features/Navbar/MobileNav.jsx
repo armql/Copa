@@ -23,17 +23,17 @@ export default function MobileNav() {
 
   return (
     <Fragment>
-      <div className="w-full flex justify-center items-center">
-        <Logo className="text-center font-bold tracking-wider py-4 text-white text-5xl z-40" />
+      <div className="flex w-full items-center justify-center">
+        <Logo className="z-40 py-4 text-center text-5xl font-bold tracking-wider text-white" />
 
         <div className="fixed bottom-10 z-40">
           <button
             type="button"
             onClick={effect ? close : open}
-            className={`p-4 shadow-sm transition duration-300 rounded-full ${
+            className={`rounded-full p-4 shadow-sm transition duration-300 ${
               effect
                 ? "bg-white text-blue-600"
-                : "bg-blue-700 hover:bg-blue-800 active:bg-blue-900 text-white"
+                : "bg-blue-700 text-white hover:bg-blue-800 active:bg-blue-900"
             }`}
           >
             {effect ? <RemoveIcon /> : <BarIcon />}
@@ -41,27 +41,27 @@ export default function MobileNav() {
         </div>
       </div>
       {effect && (
-        <div className="fixed z-20 top-0 right-0 left-0 bottom-0 bg-blue-600">
-          <div className="flex flex-col w-full h-full items-center justify-center">
+        <div className="fixed bottom-0 left-0 right-0 top-0 z-20 bg-blue-600">
+          <div className="flex h-full w-full flex-col items-center justify-center">
             {NavData.map((link) => (
               <NavLink
                 key={link.id}
                 to={link.to}
                 onClick={close}
                 className={({ isActive }) =>
-                  `cursor-pointer font-extrabold group font-libre text-6xl px-2 py-2.5 relative rounded-lg ${
+                  `group relative cursor-pointer rounded-lg px-2 py-2.5 font-libre text-6xl font-extrabold ${
                     isActive
-                      ? "text-blue-900 cursor-not-allowed"
-                      : "hover:text-blue-900 text-blue-950"
+                      ? "cursor-not-allowed text-blue-900"
+                      : "text-blue-950 hover:text-blue-900"
                   }`
                 }
               >
                 {link.img !== null && (
-                  <div className="absolute -left-6 -z-10 top-0">
+                  <div className="absolute -left-6 top-0 -z-10">
                     <LazyLoadImage
                       src={link.img}
                       alt="leaf"
-                      className="w-14 h-14 group-hover:-rotate-12 transition duration-300"
+                      className="h-14 w-14 transition duration-300 group-hover:-rotate-12"
                     />
                   </div>
                 )}

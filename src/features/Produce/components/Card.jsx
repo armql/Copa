@@ -2,7 +2,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { ProductData } from "../../../data/ProductData";
 import useToggle from "../../../hooks/useToggle";
-import LazyImage from "../../../components/common/LazyImage";
 
 export default function Card({ key, response }) {
   const [averageRating, setAverageRating] = useState(0);
@@ -176,7 +175,7 @@ export default function Card({ key, response }) {
             backgroundColor: `#${colorTheme(response.label)}`,
           }}
         >
-          <div className="absolute right-0 top-0 z-20 px-2 py-6">
+          <div className="absolute right-0 top-0 z-20 p-4">
             <button
               type="button"
               onClick={close}

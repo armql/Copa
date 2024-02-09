@@ -55,7 +55,7 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-      <p className="flex flex-col gap-2 py-14 text-center text-2xl font-light text-green-950">
+      <p className="flex flex-col gap-2 py-14 text-center text-2xl font-normal text-green-950">
         If we want to secure tomorrow, we need a smarter way. <br />
         <p className="">Starting today.</p>
       </p>

@@ -6,7 +6,7 @@ import closeup from "../../../assets/newsletter/closeup.webp";
 export default function NewsletterMobile() {
   return (
     <article
-      className={`flex z-40 flex-col gap-4 bg-stone-100 items-start w-full justify-between xl:px-82 lg:px-32 md:px-12 transition-all duration-700 px-4 pb-48 pt-10 rounded-b-[50px]
+      className={`flex z-40 flex-col gap-4 bg-stone-100 items-start w-full justify-between xl:px-82 lg:px-32 md:px-12 transition-all duration-700 px-4 py-12 pt-10
     shadow-xl overflow-hidden`}
     >
       <div className="flex flex-col gap-2 text-start">

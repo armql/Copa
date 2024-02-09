@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { NavData } from "../../data/NavData";
 import Logo from "../../components/common/Logo";
 import useOnLoad from "../../hooks/useOnLoad";
@@ -6,39 +6,47 @@ import useOnLoad from "../../hooks/useOnLoad";
 // eslint-disable-next-line react/prop-types
 export default function DefaultNav({ effect }) {
   const { loading } = useOnLoad(500);
+  const state = useLocation();
 
+  console.log(state.pathname);
   return (
     <nav
-      className={`fixed h-24 flex md:gap-0 gap-4 md:flex-row flex-col justify-between items-center w-full transition  uppercase xl:px-44 px-2 z-20 duration-100 ease-in-out ${
+      className={`fixed z-20 flex h-24 w-full flex-col items-center justify-between gap-4 px-2 uppercase  transition duration-100 ease-in-out md:flex-row md:gap-0 xl:px-44 ${
         effect ? "-translate-y-20" : "translate-x-0"
-      } ${loading ? "opacity-0" : "opacity-100"}`}
+      } ${loading ? "opacity-0" : "opacity-100"} 
+      
+      `}
     >
-      <div className="flex lg:gap-8 gap-2">
+      <div className="flex gap-2 lg:gap-8">
         {NavData.slice(0, 3).map((link) => (
           <NavLink
             key={link.id}
             to={link.to}
             className={({ isActive }) =>
-              `cursor-pointer text-sm tracking-wider font-libre text-white hover:bg-blue-700 px-2 py-2.5 rounded-lg ${
+              `cursor-pointer rounded-lg px-2 py-2.5 font-libre text-sm tracking-wider  ${
                 isActive ? "font-medium" : "font-normal "
-              }`
+              } ${state.pathname === "/produce" ? "text-green-900 hover:bg-lime-300" : "text-white hover:bg-blue-700"}`
             }
           >
             {link.name}
           </NavLink>
         ))}
       </div>
-      <Logo className="text-center font-bold tracking-wide sm:py-0 py-4 text-white sm:text-3xl text-4xl" />
+      <Logo
+        className={`py-4 text-center text-4xl font-bold tracking-wide sm:py-0 sm:text-3xl ${state.pathname === "/produce" ? "text-green-950" : "text-white"} `}
+      />
       <article className="flex items-center gap-4">
-        <div className="flex lg:gap-8 gap-2">
+        <div className="flex gap-2 lg:gap-8">
           {NavData.slice(3, 5).map((link) => (
             <NavLink
               key={link.id}
               to={link.to}
               className={({ isActive }) =>
-                `cursor-pointer text-sm tracking-wider font-libre text-white hover:bg-blue-700 px-2 py-2.5 rounded-lg ${
+                `cursor-pointer rounded-lg px-2 py-2.5 font-libre text-sm tracking-wider  ${
                   isActive ? "font-medium" : "font-normal "
-                }`
+                } ${state.pathname === "/produce" ? "text-green-900 hover:bg-lime-300" : "text-white hover:bg-blue-700"}
+                
+                `
               }
             >
               {link.name}
@@ -47,7 +55,9 @@ export default function DefaultNav({ effect }) {
         </div>
         <button
           type="button"
-          className="bg-white font-medium uppercase text-sm text-blue-900 tracking-wider lg:px-6 px-2.5 py-2.5 rounded-lg"
+          className={`rounded-lg  px-2.5 py-2.5 text-sm font-medium uppercase tracking-wider lg:px-6 
+          ${state.pathname === "/produce" ? "bg-green-900 text-white" : "bg-white text-blue-900 "}
+          `}
         >
           Find in store
         </button>
