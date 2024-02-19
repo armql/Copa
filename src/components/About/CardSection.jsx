@@ -18,7 +18,7 @@ export default function CardSection() {
             <p className="font-mono text-sm uppercase text-white">At bowery</p>
           </div>
           <div className="flex flex-col items-center justify-center gap-2">
-            <h1 className="font-condensed font-libre text-6xl font-extrabold text-white">
+            <h1 className="font-condensed font-libre text-5xl font-extrabold text-white md:text-6xl">
               We’re creating alongside nature—not harvesting from it.
             </h1>
             <p className="font-libre text-lg text-stone-100">

@@ -5,7 +5,7 @@ export default function HeroSection() {
   const { observeRef: videoRef, observe } = useOnObserve();
 
   return (
-    <section className="h-full w-screen bg-[#E5EEFD] px-8 py-12 lg:px-24 xl:px-48">
+    <section className="h-full w-full bg-[#E5EEFD] px-8 py-12 lg:px-24 xl:px-48">
       <div className="flex flex-col items-center justify-center gap-12 py-24">
         <div>
           <p className="w-full text-center text-sm font-medium uppercase text-green-900">
