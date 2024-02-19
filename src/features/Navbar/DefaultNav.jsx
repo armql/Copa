@@ -8,7 +8,6 @@ export default function DefaultNav({ effect }) {
   const { loading } = useOnLoad(500);
   const state = useLocation();
 
-  console.log(state.pathname);
   return (
     <nav
       className={`fixed z-20 flex h-24 w-full flex-col items-center justify-between gap-4 px-2 uppercase  transition duration-100 ease-in-out md:flex-row md:gap-0 xl:px-44 ${
@@ -25,7 +24,7 @@ export default function DefaultNav({ effect }) {
             className={({ isActive }) =>
               `cursor-pointer rounded-lg px-2 py-2.5 font-libre text-sm tracking-wider  ${
                 isActive ? "font-medium" : "font-normal "
-              } ${state.pathname === "/produce" ? "text-green-900 hover:bg-lime-300" : "text-white hover:bg-blue-700"}`
+              } ${state.pathname === "/produce" || state.pathname === "/recipes" ? "text-green-900 hover:bg-lime-300" : "text-white hover:bg-blue-700"}`
             }
           >
             {link.name}
@@ -33,7 +32,7 @@ export default function DefaultNav({ effect }) {
         ))}
       </div>
       <Logo
-        className={`py-4 text-center text-4xl font-bold tracking-wide sm:py-0 sm:text-3xl ${state.pathname === "/produce" ? "text-green-950" : "text-white"} `}
+        className={`py-4 text-center text-4xl font-bold tracking-wide sm:py-0 sm:text-3xl ${state.pathname === "/produce" || state.pathname === "/recipes" ? "text-green-950" : "text-white"} `}
       />
       <article className="flex items-center gap-4">
         <div className="flex gap-2 lg:gap-8">
@@ -44,7 +43,7 @@ export default function DefaultNav({ effect }) {
               className={({ isActive }) =>
                 `cursor-pointer rounded-lg px-2 py-2.5 font-libre text-sm tracking-wider  ${
                   isActive ? "font-medium" : "font-normal "
-                } ${state.pathname === "/produce" ? "text-green-900 hover:bg-lime-300" : "text-white hover:bg-blue-700"}
+                } ${state.pathname === "/produce" || state.pathname === "/recipes" ? "text-green-900 hover:bg-lime-300" : "text-white hover:bg-blue-700"}
                 
                 `
               }
@@ -56,7 +55,7 @@ export default function DefaultNav({ effect }) {
         <button
           type="button"
           className={`rounded-lg  px-2.5 py-2.5 text-sm font-medium uppercase tracking-wider lg:px-6 
-          ${state.pathname === "/produce" ? "bg-green-900 text-white" : "bg-white text-blue-900 "}
+          ${state.pathname === "/produce" || state.pathname === "/recipes" ? "bg-green-900 text-white" : "bg-white text-blue-900 "}
           `}
         >
           Find in store
